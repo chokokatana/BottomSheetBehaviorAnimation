@@ -6,7 +6,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:animateLayoutChanges="true"
     tools:context=".MainActivity">
 
     <android.support.design.widget.CoordinatorLayout
@@ -21,6 +20,7 @@
             android:id="@+id/fLMainContent"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:animateLayoutChanges="true"
             android:orientation="horizontal"
             android:padding="10dp">
 
