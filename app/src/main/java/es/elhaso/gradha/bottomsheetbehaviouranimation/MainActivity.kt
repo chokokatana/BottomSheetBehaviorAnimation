@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         // https://proandroiddev.com/the-little-secret-of-android-animatelayoutchanges-e4caab2fddec
         fLMainContent.layoutTransition.enableTransitionType(LayoutTransition.CHANGING)
+        llBottomSheet.layoutTransition.enableTransitionType(LayoutTransition.CHANGING)
 
         BottomSheetBehavior.from(llBottomSheet).let { behavior ->
             behavior.state = STATE_EXPANDED
