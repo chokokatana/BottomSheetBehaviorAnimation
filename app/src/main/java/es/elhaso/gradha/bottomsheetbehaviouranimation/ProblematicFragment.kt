@@ -3,7 +3,7 @@ package es.elhaso.gradha.bottomsheetbehaviouranimation
 import android.animation.LayoutTransition
 import android.os.Bundle
 import android.support.design.widget.BottomSheetBehavior
-import android.support.design.widget.BottomSheetBehavior.STATE_EXPANDED
+import android.support.design.widget.BottomSheetBehavior.*
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -29,12 +29,17 @@ class ProblematicFragment : Fragment() {
         llBottomSheet.layoutTransition.enableTransitionType(LayoutTransition.CHANGING)
 
         behavior = BottomSheetBehavior.from(llBottomSheet)
-        behavior.peekHeight = 50
-        behavior.state = STATE_EXPANDED
+        behavior.peekHeight = 100
+        tvState.text = getStateText(behavior)
 
-        button1.setOnClickListener { onButtonClick(it) }
-        button2.setOnClickListener { onButtonClick(it) }
-        button3.setOnClickListener { onButtonClick(it) }
+        val listener = View.OnClickListener{
+            onButtonClick(it)
+            tvState.text = getStateText(behavior)
+        }
+
+        button1.setOnClickListener(listener)
+        button2.setOnClickListener(listener)
+        button3.setOnClickListener(listener)
     }
 
     fun onButtonClick(view: View) {
@@ -50,5 +55,13 @@ class ProblematicFragment : Fragment() {
         tvInfo.text = titles[pos]
         tvSubtitle.text = texts[pos]
         tvAnimated.text = texts[pos]
+    }
+}
+
+fun getStateText(behavior: BottomSheetBehavior<LinearLayout>): String {
+    return when (behavior.state) {
+        STATE_EXPANDED -> "Expanded"
+        STATE_COLLAPSED -> "Collapsed"
+        else -> "Unknown"
     }
 }

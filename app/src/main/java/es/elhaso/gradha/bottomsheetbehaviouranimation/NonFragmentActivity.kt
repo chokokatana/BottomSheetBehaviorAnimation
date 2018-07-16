@@ -22,8 +22,17 @@ class NonFragmentActivity : AppCompatActivity() {
         llBottomSheet.layoutTransition.enableTransitionType(LayoutTransition.CHANGING)
 
         behavior = BottomSheetBehavior.from(llBottomSheet)
-        behavior.peekHeight = 50
-        behavior.state = STATE_EXPANDED
+        behavior.peekHeight = 100
+        tvState.text = getStateText(behavior)
+
+        val listener = View.OnClickListener{
+            onButtonClick(it)
+            tvState.text = getStateText(behavior)
+        }
+
+        button1.setOnClickListener(listener)
+        button2.setOnClickListener(listener)
+        button3.setOnClickListener(listener)
     }
 
     fun onButtonClick(view: View) {
